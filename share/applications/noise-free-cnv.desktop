@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=noise-free-cnv
+Comment=program for analyzing and manipulating DNA microarray data
+Exec=noise-free-cnv-gtk
+Terminal=false
+Type=Application
+Icon=noise-free-cnv
+Categories=Education;Science;Biology;
+GenericName=noise-free-cnv

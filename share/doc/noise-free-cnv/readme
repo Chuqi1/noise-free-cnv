@@ -1,0 +1,19 @@
+noise-free-cnv is a program for analyzing and manipulating DNA microarray data.
+
+CNV calling software may produce false-positive calls due to imperfect
+source material. Direct inspection of the microarray data with the
+noise-free-cnv software helps to estimate the quality of the data and
+to identify artificial calls.
+
+With noise-free-cnv it is possible to visualize individual datasets, to
+compare different datasets and to perform simple transformations. The
+visualization and the suppression of genomic waves, the comparison of
+two datasets by subtraction and the simultaneous inspection of LRR and
+BAF values are amongst the most frequent applications of this software.
+
+This program is able to read and write files suitable for PennCNV or raw
+files containing measured values of any kind.
+
+
+homepage:	http://noise-free-cnv.sourceforge.net
+author:		Philip Ginsbach <philip.development@googlemail.com>

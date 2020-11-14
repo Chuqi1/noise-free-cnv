@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+
+<html lang="en-US">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+<?php
+      header("Expires: Mon, 1 Jan 2000 00:00:00 GMT");
+      header("Cache-Control: no-cache");
+      header("Pragma: no-cache");
+?>
+    <meta name="google-site-verification" content="NIBAeiSmbk8VL6kF_ZYfbv0XAm0O2yJnUyCl4E0Iki4">
+    <title>noise-free-cnv</title>
+    <link rel=StyleSheet href="style.css" type="text/css" media=screen>
+    <meta name="author" content="Philip Ginsbach">
+    <meta name="description" content="noise-free-cnv project website">
+    <meta name="keywords" content="program,tool,application,biology,
+      medicine, science,genetics,DNA,microarray,technology,DNA-chip,CNV,
+      copy numbervariant,detection,deletion,duplication,LRR,log r ratio,
+      BAF,b allele frequency,Illumina,Affymetrix,PennCNV,open source,GTK+,
+      gimp toolkit,FFTW,fast fourier transform in the west,
+      C programing language">
+  </head>
+
+  <body class=Window>
+    <table class=MainTable>
+      <tr><td class=CornerCell></td><td class=EdgeCell></td><td class=CornerCell></td></tr>
+      <tr><td class=EdgeCell><td class=ContentCell>
+
+        <table class=CaptionTable><tr>
+          <td><a href="http://validator.w3.org/check?uri=referer">
+            <img style="border:0;width:88px;height:31px" src="http://www.w3.org/Icons/valid-html40" alt="Valid HTML 4.0 Strict">
+          </a></td>
+
+          <td><h1>noise-free-cnv</h1></td>
+
+          <td><a href="http://sourceforge.net/projects/noise-free-cnv">
+            <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=545766&amp;type=16" width="150" height="40"
+			  alt="Get noise-free-cnv at SourceForge.net. Fast, secure and Free Open Source software downloads">
+          </a></td>
+        </tr></table>
+
+        <table class=IndexTable><tr>
+          <td><a href="index.php">home</a></td>
+          <td><a href="example.php">examples</a></td>
+          <td><a href="documentation.php">documentation</a></td>
+          <td><a href="downloads.php">downloads</a></td>
+          <td><a href="http://sf.net/projects/noise-free-cnv/">sourceforge</a></td>
+          <td><a href="contact.php">contact</a></td>
+        </tr></table>
