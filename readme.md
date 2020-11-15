@@ -17,9 +17,9 @@ This program is able to read and write files suitable for PennCNV or raw files c
  - available for Windows (XP, Vista, 7) and Linux (Debian, Ubuntu, Mint)
 
 ### Downloads:
- - [Microsoft Windows installer file](https://github.com/ginsbach/noise-free-cnv/raw/main/distribute/noise-free-cnv-2.1-1-win64.msi)
-  - [Microsoft Windows zip archive](https://github.com/ginsbach/noise-free-cnv/raw/main/distribute/noise-free-cnv-2.1-1-win64.zip)
-  - [source code (GPL 3)](https://github.com/ginsbach/noise-free-cnv/raw/main/distribute/noise-free-cnv-2.1-src.tar.gz)
+ - [Microsoft Windows installer file](https://github.com/ginsbach/noise-free-cnv/raw/main/distribute/noise-free-cnv_2.2-1_win64.msi)
+ - [Microsoft Windows zip archive](https://github.com/ginsbach/noise-free-cnv/raw/main/distribute/noise-free-cnv_2.2-1_win64.zip)
+ - [Ubuntu Package](https://github.com/ginsbach/noise-free-cnv/raw/main/distribute/noise-free-cnv_2.2-1_amd64.deb)
 
 ![first example screenshot](https://github.com/ginsbach/noise-free-cnv/blob/main/web/screen1.png)
 ![second example screenshot](https://github.com/ginsbach/noise-free-cnv/blob/main/web/screen2.png)
