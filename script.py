@@ -22,13 +22,13 @@ name="noise-free-cnv"
 headline="program for analyzing and manipulating DNA microarray data"
 
 version_major="2"
-version_minor="1"
+version_minor="2"
 revision="1"
 system=platform.system()
 architecture=platform.machine().replace("i486", "i386").replace("i686", "i386").replace("x86_64", "amd64")
 
-email="<philip.development@googlemail.com>"
-homepage="http://noise-free-cnv.sourceforge.net"
+email="<ginsbach@github.com>"
+homepage="https://ginsbach.github.io/noise-free-cnv/"
 
 def preprocess(text):
 	return (text.replace("$(NAME)", name)
@@ -94,7 +94,7 @@ $(NAME) (1.0-1) optional; urgency=normal
 copyright_text=preprocess("""\
 Authors: Philip Ginsbach $(EMAIL)
 
-Copyright (c) 2010-2013 Philip Ginsbach
+Copyright (c) 2010-2020 Philip Ginsbach
 
 License:
     """+gpl3_license.replace("\n", "\n    ").replace("\n    \n", "\n\n")+"""
@@ -105,7 +105,7 @@ License, version 3, can be found in /usr/share/common-licenses/GPL-3.
 
 license_rtf_text=preprocess("""\
 {\\rtf1
-Copyright (c) 2010-2013 Philip Ginsbach $(EMAIL)
+Copyright (c) 2010-2020 Philip Ginsbach $(EMAIL)
 \\par \\par
 """+gpl3_license.replace("\n\n", " \\par \\par ").replace("\n", " ").replace(" \\par \\par ",  "\n\\par \\par\n")+"""
 }
@@ -302,39 +302,56 @@ def generate_wix_text():
 		"""))
 
 def install_runtime():
-	hostpath="C:/Gtkmm/"
+	if architecture=="x86":
+		hostpath="D:/a/_temp/msys/msys32/mingw32/"
+	elif architecture=="AMD64":
+		hostpath="D:/a/_temp/msys/msys64/mingw64/"
 
 	if not posixpath.exists("tmp/bin"):
 		os.makedirs("tmp/bin")
 
 	shutil.copy2(hostpath+"bin/libfftw3-3.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgtkmm-2.4-1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgdkmm-2.4-1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libpangomm-1.4-1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libatkmm-1.6-1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libcairomm-1.0-1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgiomm-2.4-1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libglibmm-2.4-1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libsigc-2.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgtk-win32-2.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgdk-win32-2.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgdk_pixbuf-2.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libpango-1.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libpangocairo-1.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libpangoft2-1.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libpangowin32-1.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libatk-1.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libcairo-2.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgio-2.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgmodule-2.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgobject-2.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgthread-2.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libglib-2.0-0.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libexpat-1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libfontconfig-1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libpng14-14.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/zlib1.dll", "tmp/bin")
-	shutil.copy2(hostpath+"redist/libgcc_s_sjlj-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgtkmm-2.4-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgdkmm-2.4-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libpangomm-1.4-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libatkmm-1.6-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libcairomm-1.0-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgiomm-2.4-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libglibmm-2.4-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libsigc-2.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgtk-win32-2.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgdk-win32-2.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgdk_pixbuf-2.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libpango-1.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libpangocairo-1.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libpangoft2-1.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libpangowin32-1.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libatk-1.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libcairo-2.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgio-2.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgmodule-2.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgobject-2.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgthread-2.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libglib-2.0-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libexpat-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libfontconfig-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libpng16-16.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/zlib1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgcc_s_seh-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libwinpthread-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libharfbuzz-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libstdc++-6.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libpcre-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libgraphite2.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libpixman-1-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libffi-7.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libiconv-2.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libbrotlidec.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libbz2-1.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libfribidi-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libthai-0.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libbrotlicommon.dll", "tmp/bin")
+	shutil.copy2(hostpath+"bin/libdatrie-1.dll", "tmp/bin")
 
 	if not posixpath.exists("tmp/etc/pango"):
 		os.makedirs("tmp/etc/pango")
@@ -344,21 +361,22 @@ def install_runtime():
 		os.makedirs("tmp/lib/gtk-2.0/2.10.0/engines")
 	if not posixpath.exists("tmp/share/themes/MS-Windows/gtk-2.0"):
 		os.makedirs("tmp/share/themes/MS-Windows/gtk-2.0")
-
-	shutil.copy2(hostpath+"etc/pango/pango.modules", "tmp/etc/pango")
-	shutil.copy2(hostpath+"etc/gtk-2.0/gtk.immodules", "tmp/etc/gtk-2.0")
-	shutil.copy2(hostpath+"etc/gtk-2.0/gtkrc", "tmp/etc/gtk-2.0")
+	if not posixpath.exists("tmp/lib/gdk-pixbuf-2.0/2.10.0/loaders"):
+		os.makedirs("tmp/lib/gdk-pixbuf-2.0/2.10.0/loaders")
 
 	for file in os.listdir(hostpath+"lib/gtk-2.0/2.10.0/engines"):
 		shutil.copy2(hostpath+"lib/gtk-2.0/2.10.0/engines/"+file, "tmp/lib/gtk-2.0/2.10.0/engines")
+	for file in os.listdir(hostpath+"lib/gdk-pixbuf-2.0/2.10.0/loaders"):
+		shutil.copy2(hostpath+"lib/gdk-pixbuf-2.0/2.10.0/loaders/"+file, "tmp/lib/gdk-pixbuf-2.0/2.10.0/loaders")
 	shutil.copy2(hostpath+"share/themes/MS-Windows/gtk-2.0/gtkrc", "tmp/share/themes/MS-Windows/gtk-2.0")
+	shutil.copy2(hostpath+"lib/gdk-pixbuf-2.0/2.10.0/loaders.cache", "tmp/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache")
 
 	if architecture=="x86":
-		shutil.copy2(hostpath+"redist/intl.dll", "tmp/bin")
-		shutil.copy2(hostpath+"redist/freetype6.dll", "tmp/bin")
+		shutil.copy2(hostpath+"bin/intl.dll", "tmp/bin")
+		shutil.copy2(hostpath+"bin/freetype6.dll", "tmp/bin")
 	elif architecture=="AMD64":
-		shutil.copy2(hostpath+"redist/libintl-8.dll", "tmp/bin")
-		shutil.copy2(hostpath+"redist/libfreetype-6.dll", "tmp/bin")
+		shutil.copy2(hostpath+"bin/libintl-8.dll", "tmp/bin")
+		shutil.copy2(hostpath+"bin/libfreetype-6.dll", "tmp/bin")
 
 def generate_file(filename, text):
 	file=open(filename, "wb")
@@ -404,15 +422,15 @@ def source_tarball():
 	generate_environment()
 
 	if posixpath.exists("tmp"): shutil.rmtree("tmp")
-	os.makedirs(preprocess("tmp/$(NAME)-$(VERSION)"))
+	os.makedirs(preprocess("tmp/$(NAME)_$(VERSION)"))
 
-	shutil.copytree("bin", preprocess("tmp/$(NAME)-$(VERSION)/bin"))
-	shutil.copytree("share", preprocess("tmp/$(NAME)-$(VERSION)/share"))
-	shutil.copytree("src", preprocess("tmp/$(NAME)-$(VERSION)/src"))
-	shutil.copy2("makefile", preprocess("tmp/$(NAME)-$(VERSION)"))
-	shutil.copy2("script.py", preprocess("tmp/$(NAME)-$(VERSION)"))
+	shutil.copytree("bin", preprocess("tmp/$(NAME)_$(VERSION)/bin"))
+	shutil.copytree("share", preprocess("tmp/$(NAME)_$(VERSION)/share"))
+	shutil.copytree("src", preprocess("tmp/$(NAME)_$(VERSION)/src"))
+	shutil.copy2("makefile", preprocess("tmp/$(NAME)_$(VERSION)"))
+	shutil.copy2("script.py", preprocess("tmp/$(NAME)_$(VERSION)"))
 	os.chdir("tmp")
-	subprocess.call(["tar", "-c", "-z", "-f", preprocess("../$(NAME)-$(VERSION)-src.tar.gz"), preprocess("$(NAME)-$(VERSION)")])
+	subprocess.call(["tar", "-c", "-z", "-f", preprocess("../$(NAME)_$(VERSION)_src.tar.gz"), preprocess("$(NAME)_$(VERSION)")])
 	os.chdir("..")
 	shutil.rmtree("tmp")
 
@@ -422,7 +440,7 @@ def debian_package():
 	if posixpath.exists("tmp"): shutil.rmtree("tmp")
 	os.makedirs("tmp/DEBIAN")
 	os.makedirs("tmp/usr")
-	os.chmod("tmp/usr", 0755)
+	os.chmod("tmp/usr", 0o0755)
 
 	subprocess.call(["make", "install", "-B", "-j4",
 			"CC=g++ -Wl,-z,relro",
@@ -442,7 +460,7 @@ def debian_package():
 		Section:        science
 		Priority:       optional
 		Architecture:   $(ARCHITECTURE)
-		Depends:        libc6, libfftw3-3, libgtkmm-2.4-1c2a
+		Depends:        libc6, libfftw3-3, libgtkmm-2.4-1v5
 		Installed-Size: """+str(math.ceil(installed_size/1024))+"""
 		Maintainer:     Philip Ginsbach $(EMAIL)
 		Homepage:       $(HOMEPAGE)
@@ -479,14 +497,14 @@ def windows_package():
 	if architecture=="x86":
 		subprocess.call(["candle", "setup.wxs", "-ext", "WiXUtilExtension", "-arch", "x86"])
 		subprocess.call(["light", "setup.wixobj", "-ext", "WiXUtilExtension",
-			"-ext", "WiXUiExtension", "-o", preprocess("$(NAME)-$(VERSION)-$(REVISION)-win32.msi")])
-		os.remove(preprocess("$(NAME)-$(VERSION)-$(REVISION)-win32.wixpdb"))
+			"-ext", "WiXUiExtension", "-o", preprocess("$(NAME)_$(VERSION)-$(REVISION)_win32.msi")])
+		os.remove(preprocess("$(NAME)_$(VERSION)-$(REVISION)_win32.wixpdb"))
 
 	elif architecture=="AMD64":
 		subprocess.call(["candle", "setup.wxs", "-ext", "WiXUtilExtension", "-arch", "x64"])
 		subprocess.call(["light", "setup.wixobj", "-ext", "WiXUtilExtension",
-			"-ext", "WiXUiExtension", "-o", preprocess("$(NAME)-$(VERSION)-$(REVISION)-win64.msi")])
-		os.remove(preprocess("$(NAME)-$(VERSION)-$(REVISION)-win64.wixpdb"))
+			"-ext", "WiXUiExtension", "-o", preprocess("$(NAME)_$(VERSION)-$(REVISION)_win64.msi")])
+		os.remove(preprocess("$(NAME)_$(VERSION)-$(REVISION)_win64.wixpdb"))
 
 	os.remove("setup.wixobj")
 	os.remove("setup.wxs")
@@ -497,9 +515,9 @@ def windows_package():
 	os.chdir("tmp")
 
 	if architecture=="x86":
-		subprocess.call(["zip", preprocess("../$(NAME)-$(VERSION)-$(REVISION)-win32.zip"), "-9", "-r", "*"])
+		subprocess.call(["zip", preprocess("../$(NAME)_$(VERSION)-$(REVISION)_win32.zip"), "-9", "-r", "*"])
 	elif architecture=="AMD64":
-		subprocess.call(["zip", preprocess("../$(NAME)-$(VERSION)-$(REVISION)-win64.zip"), "-9", "-r", "*"])
+		subprocess.call(["zip", preprocess("../$(NAME)_$(VERSION)-$(REVISION)_win64.zip"), "-9", "-r", "*"])
 
 	os.chdir("..")
 	shutil.rmtree("tmp")

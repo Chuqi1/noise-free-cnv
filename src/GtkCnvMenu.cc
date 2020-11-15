@@ -85,10 +85,10 @@ void Menu::on_button_info()
 	dialog.set_comments(
 		"program for analyzing and manipulating DNA microarray data\n"
 		"written in C++, using Gtkmm and FFTW3");
-	dialog.set_copyright("Copyright (c) 2010-2013 Philip Ginsbach");
-	dialog.set_website("http://noise-free-cnv.sourceforge.net");
+	dialog.set_copyright("Copyright (c) 2010-2020 Philip Ginsbach");
+	dialog.set_website("https://ginsbach.github.io/noise-free-cnv");
 	std::vector<Glib::ustring> authors;
-	authors.push_back("Philip Ginsbach <philip.development@googlemail.com>");
+	authors.push_back("Philip Ginsbach <ginsbach@github.com>");
 	dialog.set_authors(authors);
 	dialog.run();
 }

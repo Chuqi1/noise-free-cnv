@@ -1,0 +1,48 @@
+name: packaging
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-debian:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: install dependecies
+      run: sudo apt-get install libgtkmm-2.4-dev libfftw3-dev
+    - name: compile and packge
+      run: python script.py debian
+    - uses: actions/upload-artifact@v2
+      with:
+        name: noise-free-cnv_2.2-1_amd64.deb
+        path: noise-free-cnv_2.2-1_amd64.deb
+
+  build-windows:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: msys2/setup-msys2@v2
+      with:
+        install: zip mingw-w64-x86_64-toolchain mingw-w64-x86_64-python2 mingw-w64-x86_64-fftw mingw-w64-x86_64-gtkmm
+        path-type: inherit
+    - name: compile and packge
+      shell: msys2 {0}
+      run: |
+        export PATH="/d/a/_temp/msys/msys64/mingw64/bin":"/c/Program Files (x86)/WiX Toolset v3.11/bin":$PATH
+        mv /d/a/_temp/msys/msys64/mingw64/bin/mingw32-make.exe /d/a/_temp/msys/msys64/mingw64/bin/make.exe
+        python2 script.py windows
+    - uses: actions/upload-artifact@v2
+      with:
+        name: noise-free-cnv_2.2-1_win64.zip
+        path: noise-free-cnv_2.2-1_win64.zip
+    - uses: actions/upload-artifact@v2
+      with:
+        name: noise-free-cnv_2.2-1_win64.msi
+        path: noise-free-cnv_2.2-1_win64.msi
