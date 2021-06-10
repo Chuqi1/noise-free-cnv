@@ -78,7 +78,6 @@ int main(int Args, char** Arg)
 	}
 
 	Gtk::Main main_obj(Args, Arg);
-	Glib::thread_init();
 
 	Gtk::Window window_obj;
 
