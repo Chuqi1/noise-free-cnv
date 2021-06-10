@@ -71,7 +71,7 @@ Sequence root(const Sequence& s, float p)
 
 Sequence blur(const Sequence& s, float p)
 {
-	static Glib::StaticMutex Mutex;
+	static Glib::Threads::Mutex Mutex;
 	Mutex.lock();
 
 	Sequence out; out.reserve(s.size());
