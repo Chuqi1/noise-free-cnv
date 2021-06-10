@@ -7,21 +7,6 @@ on:
     branches: [ main ]
 
 jobs:
-  build-debian:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: install dependecies
-      run: sudo apt-get install libgtkmm-2.4-dev libfftw3-dev
-    - name: compile and packge
-      run: python script.py debian
-    - uses: actions/upload-artifact@v2
-      with:
-        name: noise-free-cnv_2.2-1_amd64.deb
-        path: noise-free-cnv_2.2-1_amd64.deb
-
   build-windows:
 
     runs-on: windows-latest
